@@ -42,9 +42,7 @@ def clean_nan(obj):
 @app.get("/")
 def root():
     return {
-        "status": "SRA API is running",
-        "developer": "@SRA_CyberTech_Pvt_Ltd_Owner_bot",
-        "channel": "https://t.me/SRACyberTechPvtLtd"
+       "chal behen ke lode"
     }
 
 @app.get("/warmup")
@@ -64,7 +62,7 @@ def fetch_data(Number: str = Query(None)):
             content={
                 "status": "rejected",
                 "message": "Invalid number. Use 10-15 digits.",
-                "Developer": "@SRA_CyberTech_Pvt_Ltd_Owner_bot"
+                
             }
         )
     
@@ -87,7 +85,7 @@ def fetch_data(Number: str = Query(None)):
                 content={
                     "status": "not_found",
                     "phone": Number,
-                    "Developer": "@SRA_CyberTech_Pvt_Ltd_Owner_bot"
+                    
                 }
             )
         
@@ -116,8 +114,7 @@ def fetch_data(Number: str = Query(None)):
                 "Main_Records": main_records,
                 "Alt_Records": alt_records
             },
-            "Developer": "@SRA_CyberTech_Pvt_Ltd_Owner_bot",
-            "Channel": "https://t.me/SRACyberTechPvtLtd"
+            
         }
     
     except Exception as e:
@@ -127,7 +124,7 @@ def fetch_data(Number: str = Query(None)):
             content={
                 "status": "error",
                 "message": str(e),
-                "Developer": "@SRA_CyberTech_Pvt_Ltd_Owner_bot"
+                
             }
         )
 
@@ -138,7 +135,7 @@ async def custom_404(request: Request, exc: StarletteHTTPException):
         content={
             "status": "rejected",
             "message": "Invalid endpoint. Use /FetchData?Number=...",
-            "Developer": "@SRA_CyberTech_Pvt_Ltd_Owner_bot"
+            
         }
     )
 
