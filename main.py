@@ -22,11 +22,9 @@ def get_connection():
     if _conn is None:
         with _conn_lock:
             if _conn is None:
-                # 🔥 CRITICAL FIX: Pass home_directory in config
                 _conn = duckdb.connect(config={
                     'home_directory': '/tmp',
-                    'temp_directory': '/tmp',
-                    'default_extension_directory': EXTENSION_DIR
+                    'temp_directory': '/tmp'
                 })
                 _conn.execute("INSTALL httpfs;")
                 _conn.execute("LOAD httpfs;")
@@ -143,3 +141,8 @@ async def custom_404(request: Request, exc: StarletteHTTPException):
             "Developer": "@SRA_CyberTech_Pvt_Ltd_Owner_bot"
         }
     )
+
+# Local run ke liye
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
